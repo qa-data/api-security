@@ -1,0 +1,17 @@
+{
+	"name": "qa-data/api-security",
+	"description": "API Security: provides authentication, authorization and a role-based access control management via ACL",
+	"type": "library",
+	"require": {
+		"php": ">=8.1",
+		"nette/utils": "^4.0"
+	},
+	"license": "MIT",
+	"autoload": {
+		"psr-4": {
+			"QaData\\ApiSecurity\\": "src/"
+		}
+	},
+	"minimum-stability": "dev",
+	"prefer-stable": true
+}
