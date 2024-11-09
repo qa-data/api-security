@@ -1,11 +1,11 @@
-<?php
-
-declare(strict_types = 1);
+<?php declare(strict_types = 1);
 
 namespace QaData\ApiSecurity;
 
 use Nette\Utils\Arrays;
 use RuntimeException;
+use function func_get_args;
+use function in_array;
 
 class User
 {
@@ -84,7 +84,10 @@ class User
 		return $identity && $identity->getRoles() ? $identity->getRoles() : [$this->authenticatedRole];
 	}
 
-	public function isAllowed(string|null $resource = Authorizator::All, string|null $privilege = Authorizator::All): bool
+	public function isAllowed(
+		string|null $resource = Authorizator::All,
+		string|null $privilege = Authorizator::All,
+	): bool
 	{
 		foreach ($this->getRoles() as $role) {
 			if ($this->authorizator?->isAllowed($role, $resource, $privilege)) {

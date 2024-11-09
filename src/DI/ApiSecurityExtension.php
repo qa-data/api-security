@@ -14,14 +14,14 @@ final class ApiSecurityExtension extends Nette\DI\CompilerExtension
 	public function getConfigSchema(): Nette\Schema\Schema
 	{
 		return Nette\Schema\Expect::structure([
-			'roles' => Expect::arrayOf('string|array|null'),
+			'roles' => Expect::arrayOf('string|null'),
 			'resources' => Expect::arrayOf('string|null'),
 		]);
 	}
 
 	public function loadConfiguration(): void
 	{
-		/** @var object{roles: array, resources: array} $config */
+		/** @var object{roles: array<string|null>, resources: array<string|null>} $config */
 		$config = $this->getConfig();
 
 		$builder = $this->getContainerBuilder();
@@ -50,7 +50,6 @@ final class ApiSecurityExtension extends Nette\DI\CompilerExtension
 		if ($this->name === 'apiSecurity') {
 			$builder->addAlias('user', $this->prefix('user'));
 		}
-
 	}
 
 }

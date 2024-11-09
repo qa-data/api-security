@@ -1,6 +1,4 @@
-<?php
-
-declare(strict_types = 1);
+<?php declare(strict_types = 1);
 
 namespace QaData\ApiSecurity;
 
@@ -13,6 +11,6 @@ interface Authorizator
 
 	public const Deny = false;
 
-	function isAllowed(string|null $role, string|null $resource, string|null $privilege): bool;
+	public function isAllowed(string|null $role, string|null $resource, string|null $privilege): bool;
 
 }

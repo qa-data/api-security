@@ -1,6 +1,4 @@
-<?php
-
-declare(strict_types = 1);
+<?php declare(strict_types = 1);
 
 namespace QaData\ApiSecurity;
 
@@ -24,10 +22,10 @@ class Acl implements Authorizator
 		$this->roles[$role] = [];
 
 		if ($parentRole === null) {
-            return;
-        }
+			return;
+		}
 
-        $this->roleParents[$role] = $parentRole;
+		$this->roleParents[$role] = $parentRole;
 	}
 
 	public function addResource(string $resource): void
@@ -56,41 +54,41 @@ class Acl implements Authorizator
 	public function isAllowed(string|null $role, string|null $resource, string|null $privilege = null): bool
 	{
 		if (
-            $role === null
-            || $resource === null
-            || !isset($this->roles[$role])
-            || !isset($this->resources[$resource])
-        ) {
+			$role === null
+			|| $resource === null
+			|| !isset($this->roles[$role])
+			|| !isset($this->resources[$resource])
+		) {
 			return false;
 		}
 
 		if ($privilege !== null) {
 			if (
-                isset($this->permissions[$role][$resource][$privilege])
-                && $this->permissions[$role][$resource][$privilege] === false
-            ) {
+				isset($this->permissions[$role][$resource][$privilege])
+				&& $this->permissions[$role][$resource][$privilege] === false
+			) {
 				return false;
 			}
 
 			if (
-                isset($this->permissions[$role][$resource][$privilege])
-                && $this->permissions[$role][$resource][$privilege] === true
-            ) {
+				isset($this->permissions[$role][$resource][$privilege])
+				&& $this->permissions[$role][$resource][$privilege] === true
+			) {
 				return true;
 			}
 		}
 
 		if (
-            isset($this->permissions[$role][$resource]['_all'])
-            && $this->permissions[$role][$resource]['_all'] === false
-        ) {
+			isset($this->permissions[$role][$resource]['_all'])
+			&& $this->permissions[$role][$resource]['_all'] === false
+		) {
 			return false;
 		}
 
 		if (
-            isset($this->permissions[$role][$resource]['_all'])
-            && $this->permissions[$role][$resource]['_all'] === true
-        ) {
+			isset($this->permissions[$role][$resource]['_all'])
+			&& $this->permissions[$role][$resource]['_all'] === true
+		) {
 			return true;
 		}
 

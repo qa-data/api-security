@@ -1,16 +1,17 @@
-<?php
-
-declare(strict_types = 1);
+<?php declare(strict_types = 1);
 
 namespace QaData\ApiSecurity;
 
 interface Identity
 {
 
-	function getId(): string|int;
+	public function getId(): string|int;
 
-	function getToken(): string;
+	public function getToken(): string;
 
-	function getRoles(): array;
+	/**
+	 * @return array<string>
+	 */
+	public function getRoles(): array;
 
 }

@@ -1,16 +1,14 @@
-<?php
-
-declare(strict_types = 1);
+<?php declare(strict_types = 1);
 
 namespace QaData\ApiSecurity;
 
-/**
- * @property array<string> $roles
- * @property array<mixed>  $data
- */
 class SimpleIdentity implements Identity
 {
 
+	/**
+	 * @param array<int, string> $roles
+	 * @param array<string, mixed> $data
+	 */
 	public function __construct(
 		private readonly string|int $id,
 		private readonly string $token,
@@ -20,22 +18,28 @@ class SimpleIdentity implements Identity
 	{
 	}
 
-	function getId(): string|int
+	public function getId(): string|int
 	{
 		return $this->id;
 	}
 
-	function getToken(): string
+	public function getToken(): string
 	{
 		return $this->token;
 	}
 
-	function getRoles(): array
+	/**
+	 * @return array<string>
+	 */
+	public function getRoles(): array
 	{
 		return $this->roles;
 	}
 
-	function getData(): array
+	/**
+	 * @return array<mixed>
+	 */
+	public function getData(): array
 	{
 		return $this->data;
 	}
