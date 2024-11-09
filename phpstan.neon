@@ -1,0 +1,8 @@
+parameters:
+    level: 8
+    tmpDir: %currentWorkingDirectory%/temp
+    fileExtensions:
+        - php
+    paths:
+        - src
+        - tests

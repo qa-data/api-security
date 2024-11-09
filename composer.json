@@ -15,7 +15,9 @@
 	"minimum-stability": "dev",
 	"prefer-stable": true,
 	"require-dev": {
-		"orisai/coding-standard": "^3.10"
+		"orisai/coding-standard": "^3.10",
+		"phpstan/phpstan": "^1.12",
+		"nette/di": "^3.2"
 	},
 	"config": {
 		"allow-plugins": {
